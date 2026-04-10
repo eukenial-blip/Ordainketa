@@ -3,46 +3,117 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pago</title>
+<title>Métodos de pago</title>
 
 <style>
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+  margin: 0;
+  padding: 20px;
   text-align: center;
-  padding: 30px;
 }
 
-.caja {
-  border: 1px solid #ddd;
-  padding: 20px;
-  border-radius: 10px;
+.container {
+  max-width: 400px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #555;
+}
+
+.iban {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 15px 0;
+  word-break: break-all;
+}
+
+.beneficiario {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
 }
 
 button {
-  padding: 12px 20px;
+  margin-top: 15px;
+  padding: 12px;
+  width: 100%;
   font-size: 16px;
   background: #1a73e8;
   color: white;
   border: none;
   border-radius: 8px;
+  cursor: pointer;
+}
+
+button:active {
+  background: #155ab6;
+}
+
+.mensaje {
   margin-top: 10px;
+  color: green;
+  display: none;
+  font-size: 14px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="caja">
-  <h2>Pago por transferencia</h2>
-  <p id="iban">ES12 3456 7890 1234 5678 9012</p>
-  <button onclick="copiar()">Copiar IBAN</button>
+<div class="container">
+  <h1>Métodos de pago</h1>
+
+  <p>
+    Actualmente, el pago de nuestros servicios se realiza mediante transferencia bancaria.
+    En el futuro añadiremos nuevos métodos de pago para mayor comodidad.
+  </p>
+
+  <h3>Transferencia bancaria</h3>
+
+  <div class="iban" id="iban">
+    ES12 3456 7890 1234 5678 9012
+  </div>
+
+  <button onclick="copiarIBAN()">Copiar IBAN</button>
+
+  <div class="mensaje" id="mensaje">✔ IBAN copiado al portapapeles</div>
+
+  <div class="beneficiario">
+    Beneficiario:<br>
+    Asociación Ejemplo
+  </div>
+
+  <p style="margin-top:15px; font-size:13px;">
+    Concepto: Nombre + servicio
+  </p>
 </div>
 
 <script>
-function copiar() {
+function copiarIBAN() {
   const texto = document.getElementById("iban").innerText;
-  navigator.clipboard.writeText(texto);
-  alert("IBAN copiado correctamente");
+
+  navigator.clipboard.writeText(texto).then(function() {
+    const mensaje = document.getElementById("mensaje");
+    mensaje.style.display = "block";
+
+    setTimeout(() => {
+      mensaje.style.display = "none";
+    }, 2000);
+  }).catch(function() {
+    alert("No se pudo copiar automáticamente. Mantén pulsado el IBAN para copiarlo.");
+  });
 }
 </script>
 
