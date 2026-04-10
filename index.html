@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="eu">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ordainketa moduak</title>
+<title>Ordainketa metodoak</title>
 
 <style>
 body {
@@ -11,61 +11,69 @@ body {
   background: #f5f7fa;
   margin: 0;
   padding: 20px;
-  text-align: center;
 }
 
 .container {
-  max-width: 400px;
+  max-width: 420px;
   margin: auto;
   background: white;
-  padding: 25px;
+  padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 h1 {
-  font-size: 22px;
+  font-size: 20px;
   margin-bottom: 10px;
+  text-align: center;
 }
 
-p {
+.descripcion {
+  font-size: 14px;
   color: #555;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.iban {
-  font-size: 18px;
+/* DATU BLOKEA */
+.dato {
+  margin-bottom: 15px;
+}
+
+.label {
+  font-size: 12px;
+  color: #888;
+}
+
+.valor {
+  font-size: 16px;
   font-weight: bold;
-  margin: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
   word-break: break-all;
 }
 
-.beneficiario {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #333;
-}
-
-button {
-  margin-top: 15px;
-  padding: 12px;
-  width: 100%;
-  font-size: 16px;
-  background: #1a73e8;
-  color: white;
+/* KOPIATU BOTOIA */
+.copy-btn {
+  background: none;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
+  font-size: 16px;
+  color: #1a73e8;
 }
 
-button:active {
-  background: #155ab6;
+.copy-btn:active {
+  opacity: 0.6;
 }
 
 .mensaje {
-  margin-top: 10px;
+  text-align: center;
   color: green;
+  font-size: 13px;
   display: none;
-  font-size: 14px;
+  margin-top: 10px;
 }
 </style>
 </head>
@@ -73,31 +81,42 @@ button:active {
 <body>
 
 <div class="container">
-  <h1>Ordainketa moduak</h1>
+  <h1>Ordainketa metodoak</h1>
 
-
-  <h3>Transferentzia bidez</h3>
-
-  <div class="iban" id="iban">
-    ES68 0182 0079 0102 0156 4161
+  <div class="descripcion">
+    Gaur egun, ordainketak banku-transferentziaren bidez egiten dira.
+    Etorkizunean ordainketa metodo gehiago gehituko ditugu.
   </div>
 
-  <button onclick="copiarIBAN()">IBAN-a kopiatu</button>
-
-  <div class="mensaje" id="mensaje">✔ Zenbakia arbelean kopiatu da</div>
-
-  <div class="beneficiario">
-    Onuraduna:<br>
-    Lamino Kirol Kluba
+  <div class="dato">
+    <div class="label">IBAN</div>
+    <div class="valor">
+      <span id="iban">ES12 3456 7890 1234 5678 9012</span>
+      <button class="copy-btn" onclick="kopiatuIBAN()">📋</button>
+    </div>
   </div>
 
-  <p style="margin-top:15px; font-size:13px;">
-    Kontzeptua: Zure izena + zerbitzua
-  </p>
+  <div class="dato">
+    <div class="label">Hartzailea</div>
+    <div class="valor">
+      Adibide Elkartea
+    </div>
+  </div>
+
+  <div class="dato">
+    <div class="label">Kontzeptua</div>
+    <div class="valor">
+      Izena + zerbitzua
+    </div>
+  </div>
+
+  <div class="mensaje" id="mensaje">
+    ✔ Kopiatuta
+  </div>
 </div>
 
 <script>
-function copiarIBAN() {
+function kopiatuIBAN() {
   const texto = document.getElementById("iban").innerText;
 
   navigator.clipboard.writeText(texto).then(function() {
@@ -106,9 +125,9 @@ function copiarIBAN() {
 
     setTimeout(() => {
       mensaje.style.display = "none";
-    }, 2000);
+    }, 1500);
   }).catch(function() {
-    alert("Ezin izan da automatikoki kopiatu.");
+    alert("Ezin izan da automatikoki kopiatu. Eutsi IBANari kopiatzeko.");
   });
 }
 </script>
