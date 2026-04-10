@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pago</title>
+
+<style>
+body {
+  font-family: Arial;
+  text-align: center;
+  padding: 30px;
+}
+
+.caja {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 16px;
+  background: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="caja">
+  <h2>Pago por transferencia</h2>
+  <p id="iban">ES12 3456 7890 1234 5678 9012</p>
+  <button onclick="copiar()">Copiar IBAN</button>
+</div>
+
+<script>
+function copiar() {
+  const texto = document.getElementById("iban").innerText;
+  navigator.clipboard.writeText(texto);
+  alert("IBAN copiado correctamente");
+}
+</script>
+
+</body>
+</html>
