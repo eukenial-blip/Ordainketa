@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Métodos de pago</title>
+<title>Ordainketa moduak</title>
 
 <style>
 body {
@@ -73,30 +73,30 @@ button:active {
 <body>
 
 <div class="container">
-  <h1>Métodos de pago</h1>
+  <h1>Ordainketa moduak</h1>
 
   <p>
     Actualmente, el pago de nuestros servicios se realiza mediante transferencia bancaria.
     En el futuro añadiremos nuevos métodos de pago para mayor comodidad.
   </p>
 
-  <h3>Transferencia bancaria</h3>
+  <h3>Transferentzia bidez</h3>
 
   <div class="iban" id="iban">
     ES12 3456 7890 1234 5678 9012
   </div>
 
-  <button onclick="copiarIBAN()">Copiar IBAN</button>
+  <button onclick="copiarIBAN()">IBAN-a kopiatu</button>
 
-  <div class="mensaje" id="mensaje">✔ IBAN copiado al portapapeles</div>
+  <div class="mensaje" id="mensaje">✔ Zenbakia arbelean kopiatu da</div>
 
   <div class="beneficiario">
-    Beneficiario:<br>
-    Asociación Ejemplo
+    Onuraduna:<br>
+    Lamino Kirol Kluba
   </div>
 
   <p style="margin-top:15px; font-size:13px;">
-    Concepto: Nombre + servicio
+    Kontzeptua: Zure izena + zerbitzua
   </p>
 </div>
 
@@ -112,7 +112,7 @@ function copiarIBAN() {
       mensaje.style.display = "none";
     }, 2000);
   }).catch(function() {
-    alert("No se pudo copiar automáticamente. Mantén pulsado el IBAN para copiarlo.");
+    alert("Ezin izan da automatikoki kopiatu.");
   });
 }
 </script>
